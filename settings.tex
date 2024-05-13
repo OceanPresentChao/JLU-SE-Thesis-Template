@@ -1,0 +1,77 @@
+\usepackage[UTF8]{ctex}
+\usepackage{mathptmx}
+\usepackage{amsmath, amsthm, amssymb} %数学符号等相关宏包
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %插入图片所需宏包
+\usepackage{caption} %实现图片的多行说明
+\usepackage{xspace} %提供一些好用的空格命令
+\usepackage{url} %更好的超链接显示
+\usepackage{float} %图片与表格的更好排版
+\usepackage{ulem} %更好的下划线
+\usepackage{setspace}% 行距等
+\usepackage[a4paper,top=2.0cm, bottom=2.0cm, left=3.0cm, right=3.0cm]{geometry} %设置页边距
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{makecell} %表格内换行
+\usepackage{svg}
+\usepackage{array}
+\usepackage{abstract}
+\usepackage{calc}
+\usepackage{blindtext}
+\usepackage{times}
+\usepackage{xcolor} %彩色的文字
+\usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref} %超链接包
+\usepackage{cleveref} %交叉引用
+\usepackage{listings}%code highlighting
+
+
+%使用biblatex管理文献，输出格式使用gb7714-2015标准，后端为biber
+\usepackage[backend=biber,style=gb7714-2015,hyperref=true]{biblatex}
+
+%允许公式跨页显示
+\allowdisplaybreaks
+\setstretch{1.5}
+
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\renewcommand{\abstractnamefont}{\heiti\zihao{4}}
+\renewcommand{\abstracttextfont}{\zihao{-4}}
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+
+
+\titleformat
+{\section}
+{\centering\songti\zihao{3}}
+{第 \thesection 章}
+{1em}
+{}
+
+\titleformat
+{\subsection}
+{\songti\zihao{4}}
+{\thesubsection}
+{1em}
+{}
+
+\titleformat
+{\subsubsection}
+{\songti\zihao{-4}}
+{\thesubsubsection}
+{1em}
+{}
+
+\newcommand{\jluTitle}[1]{
+\begin{center}
+\songti \zihao{-3} #1
+\end{center}
+}
+
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}
+\renewcommand{\headrulewidth}{1pt}%分隔线宽度4磅

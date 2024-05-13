@@ -1,0 +1,114 @@
+{
+
+\zihao{-3}
+\makeatletter
+\renewcommand{\arraystretch}{1.2}
+
+% inner temp length
+\newlength\@tempTitleHt
+\newlength\@tempTitleMaxWd
+
+% length used as parameters， "Wd" is a shorthand for "Width"
+\newlength\titleSingleLineMaxWd
+\newlength\titleMultiLineMaxWd
+\newlength\titleLRExtraWd
+\newlength\titleSepWd
+
+\setlength\titleSingleLineMaxWd{0.6\textwidth}
+\setlength\titleMultiLineMaxWd{0.5\textwidth}
+\setlength\titleLRExtraWd{.5em}
+\setlength\titleSepWd{.5em}
+
+% draw a fixed-width underline
+\newcommand{\titleUnderline}{%
+  \rule[-.3em]{\titleSingleLineMaxWd + 2\titleLRExtraWd}{.5pt}}
+
+% title content typesetter
+\newcommand\titleBox[1]{%
+  \setlength\@tempTitleMaxWd\titleSingleLineMaxWd
+  % Measure the total height of #1 subject to \titleSingleLineMaxWd.
+  % Here \@titleBox is necessary when #1 contains "\\".
+  \settototalheight\@tempTitleHt{\@titleBox{#1}}%
+  \ifdim\@tempTitleHt=0pt%
+    % case 1: #1 causes empty output
+    \titleUnderline
+  \else
+    % Change to LR mode, for inserting a zero-width box right after.
+    \leavevmode
+    % note: Use \normalbaseineskip instead of \baselineskip, 
+    %       since the latter is set to 0pt inside tabular env.
+    \ifdim\@tempTitleHt>\normalbaselineskip
+      % case 2: #1 is fit for multilines, or contains `\\`, hence
+      %         \titleMultiLineMaxWd is used instead, and the total 
+      %         height of #1 subject to new max width is re-measured.
+      \setlength\@tempTitleMaxWd\titleMultiLineMaxWd
+      \settototalheight\@tempTitleHt{\@titleBox{#1}}%
+      % \rlap{\smash{...}} typesets content of its argument normally 
+      % but sets it into a zero sized box. Here \@titleBox set 
+      % (possiblly) multi-line text into a single box, since \smash 
+      % only takes in argument spreading one line.
+      %
+      % Every line of title content needs an underline, hense we do
+      % a loop to typeset one underline for every line the title 
+      % content actually spreads.
+      \rlap{\smash{\@titleBox{%
+        \@whiledim\@tempTitleHt>0pt%
+        \leavevmode
+        % 
+        \do{%
+          \rlap{\titleUnderline}\\%
+          \addtolength\@tempTitleHt{-\normalbaselineskip}%
+        }%
+      }}}%
+      % Insert h-offset to manually center the title content.
+      \hspace{\dimexpr\titleLRExtraWd + .5\titleSingleLineMaxWd - .5\titleMultiLineMaxWd\relax}%
+      \@titleBox{\centering #1}%
+    \else
+      % case 3: #1 is fit for one line
+      \rlap{\titleUnderline}%
+      \hspace{\titleLRExtraWd}%
+      \@titleBox{\centering #1}%
+    \fi
+  \fi
+}
+
+% common operations on every title content
+\newcommand{\@titleBox}[1]{%
+  \parbox[t]{\@tempTitleMaxWd}{#1}}
+\makeatother
+\newlength{\lwtm}
+\setlength{\lwtm}{\widthof{ 论文题目 }}
+
+~\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{article/figure/cover.png}
+\end{figure}
+
+{
+\begin{center}
+    \zihao{1}\textbf{本科生毕业论文(设计)}
+\end{center}
+}
+
+~\\
+
+\begin{tabular}{p{\lwtm} p{\titleSingleLineMaxWd}}
+    \makebox[\lwtm][s]{中文题目}           & \titleBox{HELLO WORLD} \\
+    \makebox[\lwtm][s]{英文题目}           & \titleBox{HELLO WORLD} \\
+    \makebox[\lwtm][s]{学生姓名}           & \titleBox{OceanPresent} \\
+    \makebox[\lwtm][s]{学号}           & \titleBox{HELLO WORLD} \\
+                                            % &               \\[-10pt] 
+                                            % 用于分隔题目与其他信息
+    \makebox[\lwtm][s]{学院}           &    \titleBox{HELLO WORLD}          \\
+    \makebox[\lwtm][s]{专业}               &   \titleBox{HELLO WORLD}\\
+    \makebox[\lwtm][s]{指导教师}               &   \titleBox{HELLO WORLD} \\
+\end{tabular}
+
+~\\
+
+\begin{center}
+    {\zihao{3}\textbf{2024 年 6 月}}
+\end{center}
+}
