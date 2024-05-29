@@ -20,7 +20,7 @@
 12. 参考文献
 13. 致谢
 
-在每一章节依次填写自己的信息即可，可根据需要添加或修改文章结构，理论上settings.tex文件不需要改动。可将项目中所有文件导入OverLeaf中使用，也可在OverLeaf中搜索"JLU Thesis Template"找到本项目模板
+在每一章节依次填写自己的信息即可，可根据需要添加或修改文章结构，理论上settings.tex文件不需要改动。可将项目中所有文件导入OverLeaf中使用，也可在OverLeaf中搜索["JLU Thesis Template"](https://www.overleaf.com/latex/templates?q=JLU-Thesis-Template)找到本项目模板
 
 参考文献样式采用《GB/T 7714-2015 信息与文献 参考文献著录规则》要求的参考文献。样式文件源自[biblatex-gb7714-2015](https://github.com/hushidong/biblatex-gb7714-2015)
 
