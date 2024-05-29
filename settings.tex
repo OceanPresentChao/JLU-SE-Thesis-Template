@@ -20,12 +20,13 @@
 \usepackage{abstract}
 \usepackage{calc}
 \usepackage{blindtext}
+
 \usepackage{times}
 \usepackage{xcolor} %彩色的文字
 \usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref} %超链接包
 \usepackage{cleveref} %交叉引用
-\usepackage{listings}%code highlighting
 
+\usepackage{listings}%code highlighting
 
 %使用biblatex管理文献，输出格式使用gb7714-2015标准，后端为biber
 \usepackage[backend=biber,style=gb7714-2015,hyperref=true]{biblatex}
@@ -33,6 +34,8 @@
 %允许公式跨页显示
 \allowdisplaybreaks
 \setstretch{1.5}
+
+\setlength{\tabcolsep}{1mm}{}
 
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
@@ -74,4 +77,8 @@
 \fancyhead[L]{}
 \fancyhead[R]{}
 \fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}
-\renewcommand{\headrulewidth}{1pt}%分隔线宽度4磅
+\renewcommand{\headrulewidth}{1pt}%分隔线宽度1磅
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

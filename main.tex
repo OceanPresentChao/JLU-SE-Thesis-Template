@@ -15,14 +15,30 @@
 
 \include{article/SummaryEN}
 
-{\zihao{4}\tableofcontents}
+{
 \newpage
+\zihao{4} 
+\pagestyle{empty} 
+\tableofcontents  
+\newpage
+} %目录页不显示页码
 
-{\zihao{4}\listoffigures}
-\newpage
 
-{\zihao{4}\listoftables}
+{
 \newpage
+\zihao{4} 
+\pagestyle{empty} 
+\listoffigures
+\newpage
+}
+
+{
+\newpage
+\zihao{4} 
+\pagestyle{empty} 
+\listoftables
+\newpage
+}
 
 \include{article/Introduction}
 \include{article/TechIntroduction}
