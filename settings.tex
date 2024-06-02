@@ -74,11 +74,20 @@
 }
 
 \pagestyle{fancy}
+\fancyhf{} % 先清空样式
 \fancyhead[L]{}
 \fancyhead[R]{}
-\fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}
-\renewcommand{\headrulewidth}{1pt}%分隔线宽度1磅
+\fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}%页头
+\renewcommand{\headrulewidth}{1pt}%页头分隔线宽度1磅
+\fancyfoot[R]{\bfseries ~\thepage~}%页尾
+
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcommand{\emptypage}{
+\null
+\thispagestyle{empty}
+\newpage
+}

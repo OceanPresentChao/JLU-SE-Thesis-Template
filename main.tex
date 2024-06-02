@@ -9,25 +9,27 @@
 
 \include{article/Cover}
 
+\setcounter{page}{1}
+\pagenumbering{Roman}
+
 \include{article/OriginalStatement}
 
 \include{article/SummaryCN}
 
 \include{article/SummaryEN}
 
+
 {
 \newpage
 \zihao{4} 
-\pagestyle{empty} 
 \tableofcontents  
 \newpage
-} %目录页不显示页码
+}
 
 
 {
 \newpage
 \zihao{4} 
-\pagestyle{empty} 
 \listoffigures
 \newpage
 }
@@ -35,10 +37,15 @@
 {
 \newpage
 \zihao{4} 
-\pagestyle{empty} 
 \listoftables
 \newpage
 }
+
+% 打印时需要将第一章从单页开始，根据自己论文的页数选择是否插入空白页
+% \emptypage
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
 \include{article/Introduction}
 \include{article/TechIntroduction}
