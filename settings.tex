@@ -32,6 +32,8 @@
 %使用biblatex管理文献，输出格式使用gb7714-2015标准，后端为biber
 \usepackage[backend=biber,style=gb7714-2015,hyperref=true]{biblatex}
 
+
+
 %允许公式跨页显示
 \allowdisplaybreaks
 \setstretch{1.5}
@@ -81,6 +83,15 @@
   \addtocounter{contentpage}{1}
 }
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}
+\renewcommand{\headrulewidth}{1pt}%分隔线宽度1磅
+\fancyfoot[OR]{\bfseries ~\thecontentpage~}
+\fancyfoot[EL]{\bfseries ~\thecontentpage~}
+
 \newcommand{\alignOddPage}{
     % \cleardoublepage
     \ifodd\value{page}
@@ -93,32 +104,19 @@
     \fi
 }
 
-\pagestyle{fancy}
-\fancyhf{} % 先清空样式
-\fancyhead[L]{}
-\fancyhead[R]{}
-\fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}%页头
-\renewcommand{\headrulewidth}{1pt}%页头分隔线宽度1磅
-\fancyfoot[R]{\bfseries ~\thecontentpage~}%页尾
-
 \newcommand{\RomanNumbering}{
-    \fancyfoot[R]{\bfseries ~\Roman{contentpage}~}
+    \fancyfoot[OR]{\bfseries ~\Roman{contentpage}~}
+    \fancyfoot[EL]{\bfseries ~\Roman{contentpage}~}
 }
 
 \newcommand{\arabicNumbering}{
-    \fancyfoot[R]{\bfseries ~\arabic{contentpage}~}
+    \fancyfoot[OR]{\bfseries ~\arabic{contentpage}~}
+    \fancyfoot[EL]{\bfseries ~\arabic{contentpage}~}
 }
-
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-\newcommand{\emptypage}{
-\null
-\thispagestyle{empty}
-\newpage
-}
 
 %调整目录格式
 \titlecontents{section}
