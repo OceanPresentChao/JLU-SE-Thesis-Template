@@ -25,3 +25,9 @@
 参考文献样式采用《GB/T 7714-2015 信息与文献 参考文献著录规则》要求的参考文献。样式文件源自[biblatex-gb7714-2015](https://github.com/hushidong/biblatex-gb7714-2015)
 
 Cover.tex中文字样式代码源自[链接](https://syvshc.github.io/2021-08-04-thesis-title/)
+
+## Other Version
+
+主分支默认为单页打印，可根据自己需要在不同章节中间使用`alignOddPage`指令来对齐单双页。双页打印位于[twoside](https://github.com/OceanPresentChao/JLU-SE-Thesis-Template/tree/twoside)分支
+
+注意，overleaf模板中为单页打印格式

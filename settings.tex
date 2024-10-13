@@ -19,13 +19,14 @@
 \usepackage{array}
 \usepackage{abstract}
 \usepackage{calc}
-\usepackage{blindtext}
+\usepackage{titletoc} % 设置目录格式
+\usepackage{emptypage}
+\usepackage{atbegshi}
 
 \usepackage{times}
 \usepackage{xcolor} %彩色的文字
 \usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref} %超链接包
 \usepackage{cleveref} %交叉引用
-
 \usepackage{listings}%code highlighting
 
 %使用biblatex管理文献，输出格式使用gb7714-2015标准，后端为biber
@@ -73,13 +74,40 @@
 \end{center}
 }
 
+\newcounter{contentpage}
+\setcounter{contentpage}{1}
+
+\AtBeginShipout{%
+  \addtocounter{contentpage}{1}
+}
+
+\newcommand{\alignOddPage}{
+    % \cleardoublepage
+    \ifodd\value{page}
+        
+    \else
+        \thispagestyle{empty}
+        \null
+        \newpage
+        \addtocounter{contentpage}{-1}
+    \fi
+}
+
 \pagestyle{fancy}
 \fancyhf{} % 先清空样式
 \fancyhead[L]{}
 \fancyhead[R]{}
 \fancyhead[C]{吉林大学\quad{}软件学院\quad{}毕业论文}%页头
 \renewcommand{\headrulewidth}{1pt}%页头分隔线宽度1磅
-\fancyfoot[R]{\bfseries ~\thepage~}%页尾
+\fancyfoot[R]{\bfseries ~\thecontentpage~}%页尾
+
+\newcommand{\RomanNumbering}{
+    \fancyfoot[R]{\bfseries ~\Roman{contentpage}~}
+}
+
+\newcommand{\arabicNumbering}{
+    \fancyfoot[R]{\bfseries ~\arabic{contentpage}~}
+}
 
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -91,3 +119,25 @@
 \thispagestyle{empty}
 \newpage
 }
+
+%调整目录格式
+\titlecontents{section}
+[0pt]
+{\addvspace{1.5pt}\filright\bf}
+{\contentspush{第\thecontentslabel\ 章\quad}}
+{}
+{\titlerule*[10pt]{.}\contentspage}
+
+\titlecontents{subsection}
+[1em] % 左侧间距，增大这个值会加大subsection的缩进
+{\addvspace{0.5pt}} % above code
+{\contentspush{\thecontentslabel\ }} % numbered entry format
+{} % numberless entry format
+{\titlerule*[10pt]{.}\contentspage} % filler page format
+
+\titlecontents{subsubsection}
+[2em] % 左侧间距，增大这个值会加大subsubsection的缩进
+{\addvspace{0.5pt}} % above code
+{\contentspush{\thecontentslabel\ }} % numbered entry format
+{} % numberless entry format
+{\titlerule*[10pt]{.}\contentspage} % filler page format

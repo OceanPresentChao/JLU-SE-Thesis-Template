@@ -9,10 +9,10 @@
 
 \include{article/Cover}
 
-\setcounter{page}{1}
-\pagenumbering{Roman}
-
 \include{article/OriginalStatement}
+
+\RomanNumbering
+\setcounter{contentpage}{1}
 
 \include{article/SummaryCN}
 
@@ -41,13 +41,17 @@
 \newpage
 }
 
-% 打印时需要将第一章从单页开始，根据自己论文的页数选择是否插入空白页
+% 打印时第一章需要从单页开始，根据自己论文的页数选择是否插入空白页
 % \emptypage
 
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\arabicNumbering
+\setcounter{contentpage}{1}
 
 \include{article/Introduction}
+
+% 用于对齐单双页
+\alignOddPage
+
 \include{article/TechIntroduction}
 \include{article/Requirement}
 \include{article/Design}
